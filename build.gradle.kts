@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.serialization)
     `maven-publish`
 }
 
@@ -10,10 +10,8 @@ version = "1.0.0"
 
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "17"
-            }
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
         publishLibraryVariants("release")
     }
@@ -42,9 +40,9 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":kotlin-crypto-pure"))
-            implementation(project(":kotlin-tx-builder")) // To broadcast Txs
-            implementation(project(":kotlin-utxo")) // For UTXO data
+            implementation(project(":modules:kotlin-crypto-pure"))
+            implementation(project(":modules:kotlin-tx-builder")) // To broadcast Txs
+            implementation(project(":modules:kotlin-utxo")) // For UTXO data
             
             // Ktor Client
             implementation(libs.ktor.client.core)
