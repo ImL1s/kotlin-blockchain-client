@@ -1,33 +1,53 @@
 # kotlin-blockchain-client
 
 <p align="center">
-  <img src="../docs/images/kmp_crypto_banner.png" alt="kotlin-blockchain-client" width="100%">
+  <img src="./docs/images/hero.png" alt="kotlin-blockchain-client Hero" width="100%">
 </p>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/kotlin-2.0.21-blue.svg?logo=kotlin" alt="Kotlin"></a>
-  <a href="#"><img src="https://img.shields.io/badge/multiplatform-android%20%7C%20ios%20%7C%20jvm-brightgreen" alt="Multiplatform"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a>
+  <a href="https://jitpack.io/#ImL1s/kotlin-blockchain-client"><img src="https://jitpack.io/v/ImL1s/kotlin-blockchain-client.svg" alt="JitPack"></a>
+  <a href="#"><img src="https://img.shields.io/badge/kotlin-2.1.0-blue.svg?logo=kotlin" alt="Kotlin"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20watchOS%20%7C%20JVM-orange" alt="Platform"></a>
+  <a href="#"><img src="https://img.shields.io/badge/WatchOS-Supported-green?style=for-the-badge&logo=apple" alt="WatchOS Supported"></a>
 </p>
 
 <p align="center">
-  <strong>🌐 A lightweight, multiplatform blockchain client for Bitcoin and Ethereum.</strong>
+  <strong>📡 Lightweight Koin-friendly Blockchain RPC Client for Kotlin Multiplatform.</strong>
 </p>
 
-<p align="center">
-  Built with Ktor and Kotlinx.serialization. Provides a unified API to interact with Mempool.space (Bitcoin) and standard JSON-RPC nodes (Ethereum).
-</p>
+---
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    subgraph "Client Interface"
+        A[App Logic] --> B[BlockchainProvider]
+    end
+
+    subgraph "Network Layer (Ktor)"
+        B --> C{RPC Connector}
+        C -->|HTTP| D[EVM RPC / Infura]
+        C -->|HTTP| E[Solana RPC]
+        C -->|WebSocket| F[Real-time Events]
+    end
+
+    subgraph "Data Mapping"
+        D --> G[Response Parser]
+        E --> G
+        G --> H[Type-Safe Models]
+    end
+```
 
 ---
 
 ## ✨ Features
 
-| Feature | Description |
-|---------|-------------|
-| **Bitcoin REST** | Full integration with Mempool.space API for UTXOs, transactions, and fees. |
-| **Ethereum RPC** | Standard JSON-RPC client for EVM chains (Infura, Alchemy, etc.). |
-| **Multiplatform** | Supports Android, iOS, and JVM. |
-| **Fee Estimation** | Built-in recommended fee fetching. |
+- **Unified Provider API**: Single interface to interact with multiple chains.
+- **Ktor Powered**: Built on top of Ktor for efficient, asynchronous networking.
+- **Type-Safe RPC**: Automatic serialization/deserialization of RPC requests and responses.
+- **Multilingual Logging**: Integrated with Kermit for cross-platform debugging.
+- **Koin Integration**: Ready to be injected into your DI tree.
 
 ---
 
@@ -35,45 +55,25 @@
 
 ```kotlin
 // build.gradle.kts
-commonMain.dependencies {
-    implementation("io.github.iml1s:kotlin-blockchain-client:1.0.0")
-}
+implementation("com.github.ImL1s:kotlin-blockchain-client:0.4.0-watchos")
 ```
 
 ---
 
-## 🚀 Usage
+## 🚀 Quick Start
 
-### Bitcoin (Mempool.space)
-
+### Initialize Client
 ```kotlin
-val httpClient = HttpClient {
-    install(ContentNegotiation) {
-        json(Json { ignoreUnknownKeys = true })
-    }
-}
+val client = EthereumClient(
+    rpcUrl = "https://mainnet.infura.io/v3/...",
+    chainId = 1
+)
 
-val btcClient = MempoolSpaceClient(httpClient)
-
-// Get Balance
-val balance = btcClient.getBalance("bc1q...")
-
-// Get UTXOs
-val utxos = btcClient.getUTXOs("bc1q...")
-
-// Broadcast Transaction
-val txId = btcClient.broadcastTransaction("020000...")
+val balance = client.getBalance("0x...")
+println("Balance: $balance")
 ```
 
-### Ethereum (JSON-RPC)
+---
 
-```kotlin
-val evmClient = EvmJsonRpcClient(httpClient, "https://mainnet.infura.io/v3/YOUR_KEY")
-
-// Get Nonce
-val nonce = evmClient.getNonce("0x742d35Cc6634C0532925a3b844Bc454e4438f44e")
-
-// Get Gas Price (EIP-1559 capable)
-val fees = evmClient.getFeeRates()
-println("Fast Gas: ${fees.fast}")
-```
+## 📄 License
+MIT License
