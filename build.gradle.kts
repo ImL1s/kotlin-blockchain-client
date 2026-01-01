@@ -39,22 +39,24 @@ kotlin {
     }
 
     sourceSets {
-        commonMain.dependencies {
-            implementation(project(":modules:kotlin-crypto-pure"))
-            implementation(project(":modules:kotlin-tx-builder")) // To broadcast Txs
-            implementation(project(":modules:kotlin-utxo")) // For UTXO data
-            
-            // Ktor Client
-            implementation(libs.ktor.client.core)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.serialization.kotlinx.json)
-            implementation(libs.ktor.client.logging)
-            
-            // Coroutines
-            implementation(libs.kotlinx.coroutines.core)
-            
-            // Serialization
-            implementation(libs.kotlinx.serialization.json)
+        val commonMain by getting {
+            dependencies {
+                implementation(project(":modules:kotlin-crypto-pure"))
+                implementation(project(":modules:kotlin-tx-builder")) // To broadcast Txs
+                implementation(project(":modules:kotlin-utxo")) // For UTXO data
+                
+                // Ktor Client
+                implementation(libs.ktor.client.core)
+                implementation(libs.ktor.client.content.negotiation)
+                implementation(libs.ktor.serialization.kotlinx.json)
+                implementation(libs.ktor.client.logging)
+                
+                // Coroutines
+                implementation(libs.kotlinx.coroutines.core)
+                
+                // Serialization
+                implementation(libs.kotlinx.serialization.json)
+            }
         }
         
         commonTest.dependencies {
@@ -71,6 +73,16 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
         }
         
+        val iosMain by creating { dependsOn(commonMain) }
+        val iosX64Main by getting { dependsOn(iosMain) }
+        val iosArm64Main by getting { dependsOn(iosMain) }
+        val iosSimulatorArm64Main by getting { dependsOn(iosMain) }
+
+        val watchosMain by creating { dependsOn(commonMain) }
+        val watchosArm64Main by getting { dependsOn(watchosMain) }
+        val watchosX64Main by getting { dependsOn(watchosMain) }
+        val watchosSimulatorArm64Main by getting { dependsOn(watchosMain) }
+
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
         }

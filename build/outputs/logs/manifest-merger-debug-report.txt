@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml:2:13-83
+INJECTED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml:2:13-83
+	package
+		INJECTED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml
+	xmlns:android
+		ADDED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml:2:23-81
+uses-sdk
+INJECTED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml reason: use-sdk injection requested
+INJECTED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml
+INJECTED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml
+	android:targetSdkVersion
+		INJECTED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml
+	android:minSdkVersion
+		INJECTED from /Users/iml1s/Documents/WearWallet/modules/kotlin-blockchain-client/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest994263350830953781.xml
