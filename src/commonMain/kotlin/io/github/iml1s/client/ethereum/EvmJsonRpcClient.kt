@@ -8,6 +8,8 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
@@ -46,6 +48,7 @@ class EvmJsonRpcClient(
     private suspend inline fun <reified T> rpcCall(method: String, params: List<JsonElement>): T {
         val request = JsonRpcRequest(method = method, params = params)
         val response = httpClient.post(rpcUrl) {
+            contentType(ContentType.Application.Json)
             setBody(request)
         }.body<JsonRpcResponse<T>>()
 
