@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "io.github.iml1s"
-version = "1.0.0"
+version = "1.3.0"
 
 kotlin {
     androidTarget {
@@ -43,7 +43,7 @@ kotlin {
             dependencies {
                 implementation("io.github.iml1s:crypto-core:1.3.0")
                 implementation("io.github.iml1s:kotlin-tx-builder:1.3.0") // To broadcast Txs
-                implementation("io.github.iml1s:kotlin-utxo:1.0.0") // For UTXO data
+                implementation("io.github.iml1s:kotlin-utxo:1.3.0") // For UTXO data
                 
                 // Ktor Client
                 implementation(libs.ktor.client.core)
