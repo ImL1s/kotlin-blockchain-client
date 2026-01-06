@@ -61,3 +61,5 @@ jobs:
         cd kotlin-blockchain-client
         chmod +x gradlew
         ./gradlew build --stacktrace
+      env:
+        GRADLE_OPTS: -Xmx2g -XX:MaxMetaspaceSize=512m
