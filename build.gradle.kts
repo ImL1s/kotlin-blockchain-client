@@ -41,9 +41,9 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(project(":modules:kotlin-crypto-pure"))
-                implementation(project(":modules:kotlin-tx-builder")) // To broadcast Txs
-                implementation(project(":modules:kotlin-utxo")) // For UTXO data
+                implementation("io.github.iml1s:crypto-core:1.3.0")
+                implementation("io.github.iml1s:kotlin-tx-builder:1.3.0") // To broadcast Txs
+                implementation("io.github.iml1s:kotlin-utxo:1.0.0") // For UTXO data
                 
                 // Ktor Client
                 implementation(libs.ktor.client.core)
