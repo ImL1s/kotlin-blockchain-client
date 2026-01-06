@@ -56,6 +56,10 @@ kotlin {
                 
                 // Serialization
                 implementation(libs.kotlinx.serialization.json)
+                
+                // Network (for Electrum)
+                implementation(libs.ktor.network)
+                implementation(libs.ktor.network.tls)
             }
         }
         
