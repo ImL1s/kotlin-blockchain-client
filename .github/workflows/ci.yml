@@ -17,32 +17,38 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_ACTOR: ${{ github.actor }}
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout kotlin-blockchain-client
+      uses: actions/checkout@v4
       with:
         path: kotlin-blockchain-client
     
     # Checkout dependencies
-    - uses: actions/checkout@v4
+    - name: Checkout kotlin-crypto-pure
+      uses: actions/checkout@v4
       with:
         repository: ImL1s/kotlin-crypto-pure
         path: kotlin-crypto-pure
         
-    - uses: actions/checkout@v4
+    - name: Checkout kotlin-tx-builder
+      uses: actions/checkout@v4
       with:
         repository: ImL1s/kotlin-tx-builder
         path: kotlin-tx-builder
         
-    - uses: actions/checkout@v4
+    - name: Checkout kotlin-address
+      uses: actions/checkout@v4
       with:
         repository: ImL1s/kotlin-address
         path: kotlin-address
 
-    - uses: actions/checkout@v4
+    - name: Checkout kotlin-utxo
+      uses: actions/checkout@v4
       with:
         repository: ImL1s/kotlin-utxo
         path: kotlin-utxo
 
-    - uses: actions/checkout@v4
+    - name: Checkout solana-kmp
+      uses: actions/checkout@v4
       with:
         repository: ImL1s/solana-kmp
         path: kotlin-solana
