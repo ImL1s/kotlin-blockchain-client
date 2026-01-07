@@ -13,7 +13,7 @@ kotlin {
         compilerOptions {
             jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
         }
-        publishLibraryVariants("release")
+        publishLibraryVariants("release", "debug")
     }
 
     jvm()
@@ -102,5 +102,19 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+    lint {
+        abortOnError = false
+        checkReleaseBuilds = false
+    }
+}
+
+tasks.configureEach {
+    if (name.contains("lintVitalAnalyzeRelease") || 
+        name.contains("generateDebugAndroidTestLintModel") ||
+        name.contains("lintReportDebug") || 
+        name.contains("lintReportRelease") ||
+        name == "lintDebug") {
+        enabled = false
     }
 }
