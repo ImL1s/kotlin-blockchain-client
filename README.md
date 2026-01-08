@@ -1,3 +1,7 @@
+# ⚠️ Deprecated
+
+> This project has been moved into [web3-kmp](https://github.com/ImL1s/web3-kmp). Please check the new repository for the latest updates.
+
 # kotlin-blockchain-client
 
 <p align="center">
@@ -77,3 +81,4 @@ println("Balance: $balance")
 
 ## 📄 License
 MIT License
+
